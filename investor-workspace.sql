@@ -24,7 +24,7 @@ CREATE TABLE investor_workspace.t_stocks
 	id_sector		integer not null,
 	id_company		integer not null,
 	free_floar		double precision not null,
-	price			numeric (12, 2),
+	price			money not null,
 	dividends		double precision not null,
 	s_type			boolean not null,
 	RTS			double precision not null,
