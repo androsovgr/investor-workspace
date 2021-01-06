@@ -1,0 +1,66 @@
+@startuml
+
+entity "tcl_sectors" as sectors {
+	*id_sector : int <<generataed>>
+    	--
+	*sector_name : varchar	
+}
+
+entity "t_sectors_of_companies" as soc {
+	*id_sectors_of_companies : int <<generataed>>
+    	--
+	*id_company : int <<FK>>
+	*id_sector : int <<FK>>	
+}
+
+entity "t_companies" as companies {
+	*id_company : int <<generataed>>
+    	--
+	*company_name : varchar	
+}
+
+entity "t_stocks" as stocks {
+	*id_stocke : int <<generataed>>
+    	--
+	*id_company : int <<FK>>
+	*stocke_name : varchar	
+	*stocke_ticker : varchar	
+}
+
+entity "tcl_indexes" as indexes {
+	*id_index : int <<generataed>>
+    	--
+	*index_name : varchar		
+}
+
+entity "t_date_of_indexes_changes" as doic {
+	*id_date_of_indexes_changes : int <<generated>>
+	--
+	*id_index : int <<FK>>
+	*date_of_change : date
+}
+
+entity "t_stocks_in_indexes" as sii {
+	*id_stocke_in_index : int <<generataed>>
+    	--
+	*id_stocke : int <<FK>>	
+	*id_date_of_indexes_changes : int <<FK>>		
+}
+
+entity "t_stocks_prices" as sp {
+	*id_stocks_prices : int <<generataed>>
+    	--
+	*id_stocke : int <<FK>>	
+	*time : datatime
+	*price : double	
+}
+
+sectors ||--o{ soc
+companies ||--o{ stocks
+companies ||--o{ soc
+stocks ||--o{ sii
+stocks ||--o{ sp
+doic ||--o{ sii
+indexes ||--o{ doic
+
+@enduml
