@@ -44,7 +44,8 @@ entity "t_stocks_in_indexes" as sii {
 	*id_stocke_in_index : int <<generataed>>
     	--
 	*id_stocke : int <<FK>>	
-	*id_date_of_indexes_changes : int <<FK>>		
+	*id_date_of_indexes_changes : int <<FK>>	
+	*weight : double	
 }
 
 entity "t_stocks_prices" as sp {

@@ -60,6 +60,7 @@ CREATE TABLE investor_workspace.t_date_of_indexes_changes
 	id_date_of_indexes_changes	serial,
 	id_index			integer,
 	date_of_change			date,
+	weight 				double precision,
 	PRIMARY KEY (id_date_of_indexes_changes),
 	FOREIGN KEY (id_index) REFERENCES investor_workspace.tcl_indexes (id_index)
 );
