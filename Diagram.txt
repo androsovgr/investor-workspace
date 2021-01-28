@@ -1,58 +1,58 @@
 @startuml
 
-entity "tcl_sectors" as sectors {
-	*id_sector : int <<generataed>>
+entity "t_sectors" as sectors {
+	*sctr_pk : int <<generated>>
     	--
-	*sector_name : varchar	
+	*sctr_name : varchar	
 }
 
 entity "t_sectors_of_companies" as soc {
-	*id_sectors_of_companies : int <<generataed>>
+	*soc_pk : int <<generated>>
     	--
-	*id_company : int <<FK>>
-	*id_sector : int <<FK>>	
+	*soc_cmpn_fk : int <<FK>>
+	*soc_sctr_fk : int <<FK>>	
 }
 
 entity "t_companies" as companies {
-	*id_company : int <<generataed>>
+	*cmpn_pk : int <<generated>>
     	--
-	*company_name : varchar	
+	*cmpn_name : varchar	
 }
 
 entity "t_stocks" as stocks {
-	*id_stocke : int <<generataed>>
+	*stck_pk : int <<generated>>
     	--
-	*id_company : int <<FK>>
-	*stocke_name : varchar	
-	*stocke_ticker : varchar	
+	*stck_cmpn_fk : int <<FK>>
+	*stck_name : varchar	
+	*stck_ticker : varchar	
 }
 
-entity "tcl_indexes" as indexes {
-	*id_index : int <<generataed>>
+entity "t_indexes" as indexes {
+	*indx_pk : int <<generated>>
     	--
-	*index_name : varchar		
+	*indx_name : varchar		
 }
 
 entity "t_date_of_indexes_changes" as doic {
-	*id_date_of_indexes_changes : int <<generated>>
+	*doic_pk : int <<generated>>
 	--
-	*id_index : int <<FK>>
-	*date_of_change : date
+	*doic_indx_fk : int <<FK>>
+	*date_chng : date
 }
 
 entity "t_stocks_in_indexes" as sii {
-	*id_stocke_in_index : int <<generataed>>
+	*sii_pk : int <<generated>>
     	--
-	*id_stocke : int <<FK>>	
-	*id_date_of_indexes_changes : int <<FK>>	
-	*weight : double	
+	*sii_stck_fk : int <<FK>>	
+	*sii_doic_fk : int <<FK>>	
+	*num_stck : int
 }
 
 entity "t_stocks_prices" as sp {
-	*id_stocks_prices : int <<generataed>>
+	*sp_pk : int <<generated>>
     	--
-	*id_stocke : int <<FK>>	
-	*time : datatime
+	*sp_stck_fk : int <<FK>>	
+	*time_set : datatime
 	*price : double	
 }
 
